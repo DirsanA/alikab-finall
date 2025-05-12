@@ -1,13 +1,13 @@
 import React from "react";
 import { Box, Typography, Paper } from "@mui/material";
-import ceo1 from "../../assets/images/ceo1.jpg";
-import ceo2 from "../../assets/images/ceo2.jpg";
-import ceo3 from "../../assets/images/ceo3.jpg";
+import img1 from "../../assets/images/persons/p1.jpg";
+import img2 from "../../assets/images/persons/p2.jpg";
+import img3 from "../../assets/images/persons/p3.jpg";
 
 const teams = [
-  { src: ceo1, label: "Ethan Harper", job: "CEO" },
-  { src: ceo2, label: "Sophia Collins", job: "Co-Founder" },
-  { src: ceo3, label: "James Anderson", job: "HR" },
+  { src: img1, label: "Yihalem Tsera", job: "CEO" },
+  { src: img3, label: "Yeshambel Tsera", job: "Co-Founder" },
+  { src: img2, label: "Selam Tsera", job: "HR" },
 ];
 
 const Team = () => {

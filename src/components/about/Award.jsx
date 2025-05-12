@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -8,34 +8,26 @@ import {
   useMediaQuery,
   Modal,
   IconButton,
-  Stack,
+  Grid,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import CloseIcon from "@mui/icons-material/Close";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import logo1 from "../../assets/images/logo1.jpg";
-import logo2 from "../../assets/images/logo2.jpg";
-import logo3 from "../../assets/images/logo3.jpg";
-import logo4 from "../../assets/images/logo4.jpg";
+import logo1 from "../../assets/images/award/C1.png";
+import logo2 from "../../assets/images/award/c2.png";
+import logo3 from "../../assets/images/award/c3.png";
+import logo4 from "../../assets/images/award/c4.png";
 
 const awards = [
   { id: 1, image: logo1 },
   { id: 2, image: logo2 },
   { id: 3, image: logo3 },
   { id: 4, image: logo4 },
-  { id: 5, image: logo1 },
-  { id: 6, image: logo2 },
-  { id: 7, image: logo3 },
-  { id: 8, image: logo4 },
 ];
 
 const Award = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const scrollContainerRef = useRef(null);
 
   const handleOpen = (index) => {
     setCurrentImageIndex(index);
@@ -46,42 +38,12 @@ const Award = () => {
     setOpen(false);
   };
 
-  const handlePrev = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? awards.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === awards.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -200,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: 200,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <Box
       sx={{
-        py: 8,
+        py: { xs: 4, md: 8 },
+        px: { xs: 2, sm: 4 },
         backgroundColor: theme.palette.background.default,
-        position: "relative",
       }}
       id="awards"
     >
@@ -98,7 +60,7 @@ const Award = () => {
             mb: 1,
             fontWeight: 700,
             color: "#212A5E",
-            fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+            fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
           }}
         >
           Awards of Merit and Appreciation
@@ -109,9 +71,10 @@ const Award = () => {
           component="p"
           sx={{
             textAlign: "center",
-            mb: 3,
+            mb: { xs: 3, md: 5 },
             color: "#4E4E4EB3",
-            fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
+            fontSize: { xs: "0.9rem", sm: "1.1rem", md: "1.25rem" },
+            px: { xs: 1, sm: 0 },
           }}
         >
           We have been honored with recognition from various prestigious
@@ -119,113 +82,68 @@ const Award = () => {
         </Typography>
       </motion.div>
 
-      {/* Left scroll button */}
-      <IconButton
-        onClick={scrollLeft}
+      {/* Awards Grid */}
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
         sx={{
-          position: "absolute",
-          left: 20,
-          top: "50%",
-          transform: "translateY(-50%)",
-          zIndex: 2,
-          backgroundColor: "rgba(255,255,255,0.7)",
-          "&:hover": {
-            backgroundColor: "rgba(255,255,255,0.9)",
-          },
-          display: { xs: "none", sm: "flex" },
-        }}
-      >
-        <ChevronLeftIcon fontSize="large" />
-      </IconButton>
-
-      {/* Awards container with horizontal scroll */}
-      <Stack
-        direction="row"
-        spacing={{ xs: 2, sm: 4 }}
-        sx={{
-          overflowX: "auto",
-          scrollbarWidth: "none",
-          "&::-webkit-scrollbar": {
-            display: "none",
-          },
+          maxWidth: "900px",
           mx: "auto",
-          maxWidth: "90%",
-          py: 2,
-          alignItems: "center",
+          mt: { xs: 2, md: 4 },
         }}
-        ref={scrollContainerRef}
       >
         {awards.map((award, index) => (
-          <motion.div
-            key={award.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            whileHover={{ scale: 1.05 }}
-            style={{
-              flexShrink: 0,
-              margin: "0 8px",
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                cursor: "pointer",
-              }}
-              onClick={() => handleOpen(index)}
+          <Grid item xs={6} sm={4} md={3} key={award.id}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05 }}
             >
-              <Card
+              <Box
                 sx={{
-                  borderRadius: "50%",
-                  boxShadow: 3,
-                  transition: "all 0.3s ease",
-                  "&:hover": {
-                    boxShadow: 6,
-                  },
-                  backgroundColor: "transparent",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  cursor: "pointer",
                   p: 1,
                 }}
+                onClick={() => handleOpen(index)}
               >
-                <CardMedia
-                  component="img"
-                  image={award.image}
-                  alt={`Award ${award.id}`}
+                <Card
                   sx={{
-                    width: { xs: 60, sm: 100, md: 150 },
-                    height: { xs: 60, sm: 100, md: 150 },
-                    objectFit: "contain",
                     borderRadius: "50%",
+                    boxShadow: 3,
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      boxShadow: 6,
+                    },
+                    backgroundColor: "transparent",
+                    width: "100%",
+                    maxWidth: { xs: "120px", sm: "150px", md: "180px" },
+                    aspectRatio: "1/1",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
-                />
-              </Card>
-            </Box>
-          </motion.div>
+                >
+                  <CardMedia
+                    component="img"
+                    image={award.image}
+                    alt={`Award ${award.id}`}
+                    sx={{
+                      width: "80%",
+                      height: "80%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </Card>
+              </Box>
+            </motion.div>
+          </Grid>
         ))}
-      </Stack>
-
-      {/* Right scroll button */}
-      <IconButton
-        onClick={scrollRight}
-        sx={{
-          position: "absolute",
-          right: 20,
-          top: "50%",
-          transform: "translateY(-50%)",
-          zIndex: 2,
-          backgroundColor: "rgba(255,255,255,0.7)",
-          "&:hover": {
-            backgroundColor: "rgba(255,255,255,0.9)",
-          },
-          display: { xs: "none", sm: "flex" },
-        }}
-      >
-        <ChevronRightIcon fontSize="large" />
-      </IconButton>
+      </Grid>
 
       {/* Image Modal */}
       <Modal
@@ -236,92 +154,48 @@ const Award = () => {
           alignItems: "center",
           justifyContent: "center",
           backdropFilter: "blur(5px)",
+          p: 2,
         }}
       >
         <Box
           sx={{
             position: "relative",
-            width: isMobile ? "90%" : "70%",
-            maxWidth: "800px",
-            outline: "none",
+            bgcolor: "background.paper",
+            borderRadius: 2,
+            boxShadow: 24,
+            p: 4,
+            maxWidth: "90vw",
+            maxHeight: "90vh",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          {/* Close Button */}
           <IconButton
             onClick={handleClose}
             sx={{
               position: "absolute",
-              right: 10,
-              top: 10,
-              zIndex: 2,
-              color: "white",
-              backgroundColor: "rgba(0,0,0,0.5)",
-              "&:hover": {
-                backgroundColor: "rgba(0,0,0,0.7)",
-              },
+              right: 8,
+              top: 8,
+              color: "text.primary",
             }}
           >
-            <CloseIcon fontSize="large" />
+            <CloseIcon />
           </IconButton>
 
-          {/* Left Arrow */}
-          <IconButton
-            onClick={handlePrev}
+          <CardMedia
+            component="img"
+            image={awards[currentImageIndex].image}
+            alt={`Award ${awards[currentImageIndex].id}`}
             sx={{
-              position: "absolute",
-              left: 10,
-              top: "50%",
-              transform: "translateY(-50%)",
-              zIndex: 2,
-              color: "white",
-              backgroundColor: "rgba(0,0,0,0.5)",
-              "&:hover": {
-                backgroundColor: "rgba(0,0,0,0.7)",
-              },
+              maxWidth: "100%",
+              maxHeight: "80vh",
+              objectFit: "contain",
             }}
-          >
-            <ChevronLeftIcon fontSize="large" />
-          </IconButton>
-
-          {/* Image */}
-          <motion.div
-            key={currentImageIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            <CardMedia
-              component="img"
-              image={awards[currentImageIndex].image}
-              alt={`Award ${awards[currentImageIndex].id}`}
-              sx={{
-                width: "100%",
-                height: "auto",
-                maxHeight: "80vh",
-                objectFit: "contain",
-                borderRadius: 2,
-              }}
-            />
-          </motion.div>
-
-          {/* Right Arrow */}
-          <IconButton
-            onClick={handleNext}
-            sx={{
-              position: "absolute",
-              right: 10,
-              top: "50%",
-              transform: "translateY(-50%)",
-              zIndex: 2,
-              color: "white",
-              backgroundColor: "rgba(0,0,0,0.5)",
-              "&:hover": {
-                backgroundColor: "rgba(0,0,0,0.7)",
-              },
-            }}
-          >
-            <ChevronRightIcon fontSize="large" />
-          </IconButton>
+          />
+          <Typography variant="h6" sx={{ mt: 2 }}>
+            Award {currentImageIndex + 1}
+          </Typography>
         </Box>
       </Modal>
     </Box>

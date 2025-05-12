@@ -13,8 +13,7 @@ const services = [
       "We import electric, hybrid, agricultural, and construction vehicles to support Ethiopia’s development and sustainable future.",
     image: img1,
     stats: [
-      { value: "100+", label: "Vehicles Delivered" },
-      { value: "EV", label: "Options Available" },
+      { value: "20+", label: "Vehicles Delivered" },
       { value: "24/7", label: "Support" },
     ],
     color: "from-green-600 to-green-800",
@@ -25,9 +24,8 @@ const services = [
       "We export Ethiopia’s finest agricultural products, including coffee, oilseeds, sesame, and pulses, to markets around the globe.",
     image: img3,
     stats: [
-      { value: "50+", label: "Export Destinations" },
+      { value: "5+", label: "Export Destinations" },
       { value: "100%", label: "Organic Certified" },
-      { value: "24h", label: "Fulfillment" },
     ],
     color: "from-yellow-600 to-yellow-800",
   },
@@ -37,7 +35,6 @@ const services = [
       "We provide transport services across Ethiopia and Djibouti, and offer expert consultancy on logistics and vehicle acquisition.",
     image: img2,
     stats: [
-      { value: "2", label: "Countries Covered" },
       { value: "99.9%", label: "On-Time Delivery" },
       { value: "20+", label: "Expert Consultants" },
     ],

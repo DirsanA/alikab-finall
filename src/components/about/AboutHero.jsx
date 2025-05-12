@@ -34,7 +34,6 @@ import {
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import about1 from "../../assets/byd1.png";
-import aboutPattern from "../../assets/byd1.png";
 
 // Animation variants
 const containerVariants = {
@@ -317,11 +316,11 @@ const AboutHero = () => {
                     sx={{ display: "flex", flexWrap: "wrap", gap: 2, mt: 2 }}
                   >
                     {[
-                      { icon: <Groups />, label: "150+ Employees" },
-                      { icon: <LocationOn />, label: "5 Regional Offices" },
+                      { icon: <Groups />, label: "15+ Employees" },
+                      { icon: <LocationOn />, label: "2 Regional Offices" },
                       {
                         icon: <CalendarToday />,
-                        label: "13+ Years Experience",
+                        label: "A Year of  Experience",
                       },
                       { icon: <Star />, label: "ISO Certified" },
                     ].map((item, index) => (

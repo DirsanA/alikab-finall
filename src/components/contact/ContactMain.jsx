@@ -47,7 +47,7 @@ const ContactMain = () => {
           <ContactCard
             icon={<Mail size={24} />}
             title="Email Us"
-            items={["alikab@gmail.com"]}
+            items={["alikabimportexport@gmail.com"]}
           />
           <ContactCard
             icon={<Clock size={24} />}
