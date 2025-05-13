@@ -92,15 +92,18 @@ const Hero = ({ slides, onCtaClick }) => {
       onMouseLeave={() => setIsHovered(false)}
       aria-label="Image carousel"
     >
-      {/* Background Slide with Parallax Effect */}
-      <AnimatePresence initial={false} custom={direction}>
+      {/* Background Slide - Enhanced Transition */}
+      <AnimatePresence custom={direction} initial={false}>
         <motion.div
           key={currentSlide}
           custom={direction}
-          initial={{ opacity: 0, x: direction * 100 }}
+          initial={{ opacity: 0, x: direction > 0 ? "100%" : "-100%" }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -direction * 100 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          exit={{ opacity: 0, x: direction > 0 ? "-100%" : "100%" }}
+          transition={{
+            duration: 1.2,
+            ease: [0.32, 0.72, 0, 1], // Custom cubic bezier for smoothness
+          }}
           className="z-0 absolute inset-0 w-full h-full"
         >
           <div className="relative w-full h-full">
@@ -110,9 +113,11 @@ const Hero = ({ slides, onCtaClick }) => {
               className="w-full h-full object-center object-cover"
               initial={{ scale: 1.1 }}
               animate={{ scale: 1 }}
-              transition={{ duration: 8, ease: "linear" }}
+              transition={{
+                duration: 8,
+                ease: "linear",
+              }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30"></div>
           </div>
         </motion.div>
       </AnimatePresence>
@@ -125,14 +130,22 @@ const Hero = ({ slides, onCtaClick }) => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
-            transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
+            transition={{
+              duration: 0.8,
+              ease: [0.4, 0, 0.2, 1], // Smoother ease curve
+              delay: 0.2,
+            }}
             className="mx-auto max-w-4xl text-white pointer-events-auto"
           >
             <motion.h1
-              className="mb-4 font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-tight"
+              className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] mb-4 font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-tight"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+                delay: 0.4,
+              }}
             >
               {slides[currentSlide].title}
             </motion.h1>
@@ -141,10 +154,17 @@ const Hero = ({ slides, onCtaClick }) => {
               className="space-y-3 mx-auto px-4 sm:px-0 max-w-3xl text-white text-lg sm:text-xl lg:text-2xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+                delay: 0.6,
+              }}
             >
               {slides[currentSlide].description.map((paragraph, index) => (
-                <p key={index} className="leading-relaxed">
+                <p
+                  key={index}
+                  className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)] leading-relaxed"
+                >
                   {paragraph}
                 </p>
               ))}
@@ -153,7 +173,10 @@ const Hero = ({ slides, onCtaClick }) => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
+              transition={{
+                delay: 0.8,
+                ease: "easeOut",
+              }}
               className="mt-8"
             >
               <button
