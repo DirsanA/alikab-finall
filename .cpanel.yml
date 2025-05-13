@@ -1,1 +1,7 @@
-
+deployment:
+  branch: main # specify the branch you want to deploy
+  hooks:
+    pre_deploy: # Optional: commands to run before deployment
+      - echo "Running pre-deployment hooks"
+    post_deploy: # Optional: commands to run after deployment
+      - echo "Running post-deployment hooks"
