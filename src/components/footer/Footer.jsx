@@ -284,7 +284,8 @@ const Footer = () => {
         <Typography>
           Copyright © 2025{" "}
           <span style={{ color: "#FA812F", fontWeight: "bold" }}>ALIKAB</span>{" "}
-          International Trading PLC. All rights reserved | Developed by:
+          International Trading PLC. All rights reserved | Developed by:Dirsan
+          Antehun
         </Typography>
       </Box>
     </Box>
