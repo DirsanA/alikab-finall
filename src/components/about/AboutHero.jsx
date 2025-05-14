@@ -157,10 +157,11 @@ const AboutHero = () => {
                 mb: 4,
               }}
             >
-              ALIKAB IMPORT EXPORT is a leading multi-sectoral enterprise with a
-              strong presence in Ethiopia's growing economy. Founded in 2010,
-              we've grown from a small trading company to a diversified business
-              group impacting multiple industries.
+              ALIKAB IMPORT EXPORT is a leading multi-sectoral enterprise in
+              Ethiopia, specializing in the export of coffee, pulses, and
+              oilseed beans, and the import of vehicles, machinery, and
+              agrochemicals. We also offer transportation solutions,
+              facilitating trade and logistics across East Africa.
             </Typography>
 
             <Box
