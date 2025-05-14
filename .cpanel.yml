@@ -1,4 +1,0 @@
-deployment:
-  tasks:
-    - /bin/rm -rf /home/alikabdi/public_html/*
-    - /bin/cp -R /home/alikabdi/repositories/alikab-finall/dist/* /home/alikabdi/public_html/

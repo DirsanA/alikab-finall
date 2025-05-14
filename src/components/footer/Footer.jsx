@@ -198,7 +198,7 @@ const Footer = () => {
             </Box>
             <Box
               component={Link}
-              to="/admin"
+              to="#"
               sx={{
                 color: "inherit",
                 textDecoration: "none",
@@ -208,7 +208,7 @@ const Footer = () => {
                 navigate("/admin");
               }}
             >
-              Login
+              Privacy
             </Box>
           </Stack>
         </Grid>
@@ -284,8 +284,7 @@ const Footer = () => {
         <Typography>
           Copyright © 2025{" "}
           <span style={{ color: "#FA812F", fontWeight: "bold" }}>ALIKAB</span>{" "}
-          International Trading PLC. All rights reserved | Developed by:Dirsan
-          Antehun
+          International Trading PLC. All rights reserved
         </Typography>
       </Box>
     </Box>
