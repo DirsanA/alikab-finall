@@ -92,17 +92,17 @@ const Hero = ({ slides, onCtaClick }) => {
       onMouseLeave={() => setIsHovered(false)}
       aria-label="Image carousel"
     >
-      {/* Background Slide - Enhanced Transition */}
+      {/* Background Slide - Smoother Transition */}
       <AnimatePresence custom={direction} initial={false}>
         <motion.div
           key={currentSlide}
           custom={direction}
-          initial={{ opacity: 0, x: direction > 0 ? "100%" : "-100%" }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: direction > 0 ? "-100%" : "100%" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{
-            duration: 1.2,
-            ease: [0.32, 0.72, 0, 1], // Custom cubic bezier for smoothness
+            duration: 1.5,
+            ease: [0.4, 0, 0.2, 1],
           }}
           className="z-0 absolute inset-0 w-full h-full"
         >
@@ -127,12 +127,12 @@ const Hero = ({ slides, onCtaClick }) => {
         <AnimatePresence mode="wait">
           <motion.div
             key={`content-${currentSlide}`}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{
               duration: 0.8,
-              ease: [0.4, 0, 0.2, 1], // Smoother ease curve
+              ease: [0.4, 0, 0.2, 1],
               delay: 0.2,
             }}
             className="mx-auto max-w-4xl text-white pointer-events-auto"

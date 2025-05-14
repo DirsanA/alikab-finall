@@ -167,7 +167,7 @@ const Header = ({ scrolled }) => {
       <div className="md:hidden flex items-center" ref={buttonRef}>
         <button
           onClick={toggleMenu}
-          className="focus:outline-none text-white relative w-6 h-6"
+          className="relative focus:outline-none w-6 h-6 text-white"
           aria-label="Toggle menu"
         >
           <div
@@ -215,7 +215,7 @@ const Header = ({ scrolled }) => {
       {isMenuOpen && (
         <div
           ref={menuRef}
-          className="md:hidden fixed top-20 right-4 left-4 z-40 bg-gray-800 bg-opacity-95 shadow-lg px-6 py-4 rounded-lg"
+          className="md:hidden top-20 right-4 left-4 z-40 fixed bg-gray-800 bg-opacity-95 shadow-lg px-6 py-4 rounded-lg"
         >
           <div className="flex flex-col space-y-4">
             {NAV_ITEMS.map((item) => (
@@ -229,12 +229,12 @@ const Header = ({ scrolled }) => {
                       <span className="flex items-center">
                         {item.name}
                         {item.name === "Our Imports" && (
-                          <span className="ml-2 bg-red-600 px-2 py-[2px] rounded-full text-[10px] text-white">
+                          <span className="bg-red-600 ml-2 px-2 py-[2px] rounded-full text-[10px] text-white">
                             NEW
                           </span>
                         )}
                       </span>
-                      <span className="text-lg font-bold">
+                      <span className="font-bold text-lg">
                         {openDropdown === item.name ? "−" : "+"}
                       </span>
                     </button>

@@ -8,8 +8,6 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import logo4 from "../../assets/logoUpdated.png";
-
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,7 +36,11 @@ const Footer = () => {
         {/* Contact Section */}
         <Grid item xs={12} sm={6} md={4}>
           <Box mb={2} sx={{ width: 250, marginTop: "-20px" }}>
-            <img src={logo4} alt="Tamrin Logo" style={{ width: "100%" }} />
+            <img
+              src="/assets/logoUpdated.png"
+              alt="Alikab Logo"
+              style={{ width: "100%" }}
+            />
           </Box>
           <Stack direction="row" spacing={1} alignItems="flex-start" mb={2}>
             <RoomIcon sx={{ color: "#FA812F", mt: 0.5 }} />

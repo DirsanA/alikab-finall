@@ -14,12 +14,13 @@ export const NAV_LINKS = [
 
 export const HERO_SLIDES = [
   {
-    title: "Coffee Seed",
+    title: "Agri Truck",
     description: [
-      "Alikab is actively involved in the export of high-quality Ethiopian coffee beans, delivering rich flavors and heritage to the global market.",
+      "Our agricultural trucks are tailored for farm operations, offering dependable transportation of produce and supplies across various terrains.",
     ],
-    backgroundImage: coffeeSeed,
+    backgroundImage: agriTruck,
   },
+
   {
     title: "BYD",
     description: [
@@ -42,11 +43,11 @@ export const HERO_SLIDES = [
     backgroundImage: Fsr,
   },
   {
-    title: "Agri Truck",
+    title: "Coffee Seed",
     description: [
-      "Our agricultural trucks are tailored for farm operations, offering dependable transportation of produce and supplies across various terrains.",
+      "Alikab is actively involved in the export of high-quality Ethiopian coffee beans, delivering rich flavors and heritage to the global market.",
     ],
-    backgroundImage: agriTruck,
+    backgroundImage: coffeeSeed,
   },
 ];
 

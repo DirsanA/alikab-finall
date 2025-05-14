@@ -1,28 +1,18 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   Typography,
-  Container,
-  Grid,
-  Box,
-  Card,
-  CardContent,
   Button,
+  Box,
+  Grid,
+  Chip,
+  Avatar,
   useTheme,
   useMediaQuery,
-  Avatar,
-  Chip,
 } from "@mui/material";
 import {
-  ImportExport,
-  ShoppingCart,
-  LocalShipping,
-  Agriculture,
-  Factory,
-  Business,
-  School,
-  ArrowForward,
-  EmojiObjects,
+  EmojiEvents,
   Public,
   Handshake,
   TrendingUp,
@@ -30,440 +20,271 @@ import {
   LocationOn,
   CalendarToday,
   Star,
+  ArrowForward,
 } from "@mui/icons-material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
-import about1 from "../../assets/byd1.png";
-
-// Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      when: "beforeChildren",
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 40, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 10,
-    },
-  },
-};
-
-// New animation variants for Our Company section
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    },
-  },
-};
-
-const slideInFromLeft = {
-  hidden: { x: -100, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 10,
-    },
-  },
-};
-
-const slideInFromRight = {
-  hidden: { x: 100, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 10,
-    },
-  },
-};
+import aboutImage from "../../assets/byd1.png";
 
 const AboutHero = () => {
+  const [hovered, setHovered] = useState(false);
+  const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  const stats = [
+    { icon: <Groups />, value: "15+", label: "Employees" },
+    { icon: <LocationOn />, value: "2", label: "Regional Offices" },
+    { icon: <CalendarToday />, value: "1+", label: "Years Experience" },
+    { icon: <Star />, value: "ISO", label: "Certified" },
+  ];
+
+  const features = [
+    {
+      icon: <EmojiEvents />,
+      title: "Excellence",
+      desc: "Committed to delivering exceptional quality in all our services",
+    },
+    {
+      icon: <Handshake />,
+      title: "Integrity",
+      desc: "Building trust through transparency and ethical business practices",
+    },
+    {
+      icon: <TrendingUp />,
+      title: "Growth",
+      desc: "Driving sustainable development for our clients and communities",
+    },
+    {
+      icon: <Public />,
+      title: "Global Reach",
+      desc: "Connecting Ethiopian businesses to international markets",
+    },
+  ];
+
   return (
     <Box
-      sx={{ width: "100%", overflowX: "hidden", bgcolor: "background.default" }}
+      sx={{
+        position: "relative",
+        width: "100%",
+        minHeight: "100vh",
+        overflow: "hidden",
+        background: "linear-gradient(135deg, #0a162a 0%, #1a2d55 100%)",
+        color: "white",
+        pt: { xs: 12, md: 20 },
+        pb: { xs: 8, md: 16 },
+      }}
     >
-      {/* Hero Section - unchanged */}
+      {/* Animated background elements */}
       <Box
         sx={{
-          width: "100vw",
-          height: "100vh",
-          position: "relative",
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${about1})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: isMobile ? "scroll" : "fixed",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          position: "absolute",
+          inset: 0,
           overflow: "hidden",
+          zIndex: 0,
         }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          style={{
-            position: "relative",
-            zIndex: 10,
-            color: "white",
-            textAlign: "center",
-            padding: "0 20px",
-          }}
-        >
-          <Typography
-            variant="h1"
-            sx={{
-              fontWeight: "bold",
-              fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4.5rem" },
-              mb: 2,
-              textShadow: "0 2px 10px rgba(0,0,0,0.3)",
-            }}
-          >
-            About <span style={{ color: "#FA812F" }}>ALIKAB</span>
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              fontSize: { xs: "1.1rem", sm: "1.5rem" },
-              maxWidth: 800,
-              mx: "auto",
-              mb: 4,
-              textShadow: "0 1px 3px rgba(0,0,0,0.3)",
-            }}
-          >
-            Driving economic progress through strategic engagement across
-            multiple sectors
-          </Typography>
-
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              endIcon={<ArrowForward />}
-              sx={{
-                borderRadius: 50,
-                px: 4,
-                py: 1.5,
-                fontSize: "1rem",
-                fontWeight: "bold",
-                boxShadow: "0 4px 20px rgba(250, 129, 47, 0.4)",
-              }}
-            >
-              Explore Our Services
-            </Button>
-          </motion.div>
-
+        {[...Array(15)].map((_, i) => (
           <motion.div
+            key={i}
+            style={{
+              position: "absolute",
+              backgroundColor: theme.palette.primary.main,
+              opacity: 0.1,
+              borderRadius: "50%",
+              x: Math.random() * 100,
+              y: Math.random() * 100,
+              width: Math.random() * 300 + 100,
+              height: Math.random() * 300 + 100,
+            }}
             animate={{
-              y: [0, -15, 0],
+              x: [null, Math.random() * 100],
+              y: [null, Math.random() * 100],
             }}
             transition={{
+              duration: Math.random() * 20 + 10,
               repeat: Infinity,
-              duration: 2.5,
-              ease: "easeInOut",
+              repeatType: "reverse",
             }}
-            style={{ marginTop: 60 }}
-          >
-            <KeyboardArrowDownIcon
-              fontSize="large"
-              sx={{
-                color: "white",
-                opacity: 0.8,
-                fontSize: "3rem",
-              }}
-            />
-          </motion.div>
-        </motion.div>
-
-        {/* Animated floating elements */}
-        {!isMobile && (
-          <>
-            <motion.div
-              initial={{ x: -100, y: 100, opacity: 0 }}
-              animate={{ x: 0, y: 0, opacity: 0.7 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              style={{
-                position: "absolute",
-                left: "10%",
-                top: "30%",
-                fontSize: "5rem",
-                color: "rgba(247, 107, 13, 0.94)",
-              }}
-            >
-              <EmojiObjects fontSize="inherit" />
-            </motion.div>
-            <motion.div
-              initial={{ x: 100, y: -100, opacity: 0 }}
-              animate={{ x: 0, y: 0, opacity: 0.7 }}
-              transition={{ duration: 1, delay: 0.7 }}
-              style={{
-                position: "absolute",
-                right: "10%",
-                bottom: "20%",
-                fontSize: "5rem",
-                color: "rgba(245, 245, 247, 0.98)",
-              }}
-            >
-              <Public fontSize="inherit" />
-            </motion.div>
-          </>
-        )}
+          />
+        ))}
       </Box>
 
-      {/* Enhanced Our Company Section */}
-      <Container sx={{ py: 8 }}>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <motion.div variants={slideInFromRight}>
-                <Box sx={{ mb: 4 }}>
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      fontWeight: "bold",
-                      color: "#212A5E",
-                      fontSize: { xs: "1.8rem", md: "2.2rem" },
-                      mb: 2,
-                      position: "relative",
-                      display: "inline-block",
-                    }}
-                  >
-                    Our Company
-                    <motion.div
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5 }}
-                      style={{
-                        height: "4px",
-                        backgroundColor: "#FA812F",
-                        marginTop: "8px",
-                        width: "100%",
-                        transformOrigin: "left",
-                      }}
-                    />
-                  </Typography>
-                </Box>
-
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: "#4E4E4E",
-                      lineHeight: 1.8,
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    <strong style={{ color: "#FA812F" }}>
-                      ALIKAB IMPORT EXPORT
-                    </strong>{" "}
-                    is a leading multi-sectoral enterprise with a strong
-                    presence in Ethiopia's growing economy. Founded in 2010,
-                    we've grown from a small trading company to a diversified
-                    business group impacting multiple industries.Our mission is
-                    to drive sustainable economic development through innovative
-                    solutions, quality services, and strategic partnerships.
-                    We're committed to excellence, integrity, and creating value
-                    for our clients, partners, and the communities we serve.
-                  </Typography>
-
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: "#4E4E4E",
-                      lineHeight: 1.8,
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    Our mission is to drive sustainable economic development
-                    through innovative solutions, quality services, and
-                    strategic partnerships. We're committed to excellence,
-                    integrity, and creating value for our clients, partners, and
-                    the communities we serve.
-                  </Typography>
-
-                  <Box
-                    sx={{ display: "flex", flexWrap: "wrap", gap: 2, mt: 2 }}
-                  >
-                    {[
-                      { icon: <Groups />, label: "15+ Employees" },
-                      { icon: <LocationOn />, label: "2 Regional Offices" },
-                      {
-                        icon: <CalendarToday />,
-                        label: "A Year of  Experience",
-                      },
-                      { icon: <Star />, label: "ISO Certified" },
-                    ].map((item, index) => (
-                      <motion.div
-                        key={index}
-                        whileHover={{ y: -5 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Chip
-                          icon={item.icon}
-                          label={item.label}
-                          sx={{
-                            backgroundColor: "#F5F5F5",
-                            px: 2,
-                            py: 1.5,
-                            borderRadius: 2,
-                            fontWeight: "medium",
-                          }}
-                        />
-                      </motion.div>
-                    ))}
-                  </Box>
-
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    style={{ alignSelf: "flex-start", marginTop: 16 }}
-                  >
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      size="large"
-                      endIcon={<ArrowForward />}
-                      sx={{
-                        borderRadius: 50,
-                        px: 4,
-                        py: 1.5,
-                        fontSize: "1rem",
-                        fontWeight: "bold",
-                        borderWidth: 2,
-                        "&:hover": {
-                          borderWidth: 2,
-                        },
-                      }}
-                    >
-                      Our History
-                    </Button>
-                  </motion.div>
-                </Box>
-              </motion.div>
-            </Grid>
-          </Grid>
-        </motion.div>
-      </Container>
-
-      {/* Features Cards Section - modified to remove animation */}
-      <Grid container spacing={2} justifyContent="center" wrap="wrap">
-        {[
-          {
-            icon: <ImportExport fontSize="large" />,
-            title: "Import",
-            desc: "Focused on importing essential goods like vehicles, machinery, and agricultural products to drive development.",
-          },
-          {
-            icon: <ShoppingCart fontSize="large" />,
-            title: "Export",
-            desc: "Exporting high-quality Ethiopian products like coffee, sesame, and oilseeds to global markets.",
-          },
-          {
-            icon: <LocalShipping fontSize="large" />,
-            title: "Transport",
-            desc: "Efficient logistics and transportation services for goods movement across Ethiopia and beyond.",
-          },
-          {
-            icon: <Agriculture fontSize="large" />,
-            title: "Agriculture",
-            desc: "Engaging in sustainable agricultural practices to ensure food security and promote growth.",
-          },
-          {
-            icon: <Factory fontSize="large" />,
-            title: "Manufacturing",
-            desc: "Promoting local manufacturing to enhance production capacity and create job opportunities.",
-          },
-          {
-            icon: <Business fontSize="large" />,
-            title: "Consulting",
-            desc: "Providing expert consulting services in trade, investment, and industry development.",
-          },
-          {
-            icon: <School fontSize="large" />,
-            title: "Social Work",
-            desc: "Committed to community development programs aimed at improving social welfare.",
-          },
-        ].map((feature, index) => (
-          <Grid
-            item
-            key={index}
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            sx={{ display: "flex", justifyContent: "center" }}
+      <Grid
+        container
+        spacing={4}
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          px: { xs: 2, sm: 4, md: 8 },
+          maxWidth: 1600,
+          mx: "auto",
+          alignItems: "center",
+        }}
+      >
+        {/* Left side - Text content */}
+        <Grid item xs={12} md={6}>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <Card
+            <Typography
+              variant="h1"
               sx={{
-                textAlign: "center",
-                py: 3,
-                px: 2,
-                boxShadow: "none",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                width: "100%",
-                maxWidth: 280,
-                transition: "0.3s",
-                backgroundColor: "#F9F9F9",
-                "&:hover": {
-                  backgroundColor: "#212A5E",
-                  opacity: 1,
-                  cursor: "pointer",
-                  "& *": {
-                    color: "white",
-                  },
-                },
+                fontWeight: "bold",
+                fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4rem" },
+                lineHeight: 1.2,
+                mb: 3,
+                background: "linear-gradient(90deg, #FFFFFF, #B4D3FE)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               }}
             >
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Box sx={{ color: "#212A5E", mb: 2 }}>{feature.icon}</Box>
-                <Typography
-                  variant="h6"
-                  fontWeight="bold"
-                  sx={{ color: "#212A5E" }}
+              <motion.span>Driving Economic</motion.span>
+              <br />
+
+              <motion.span style={{ color: theme.palette.secondary.main }}>
+                Progress Across Ethiopia, and Beyond
+              </motion.span>
+            </Typography>
+
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: { xs: "1rem", md: "1.1rem" },
+                lineHeight: 1.7,
+                color: "#B4D3FE",
+                maxWidth: 600,
+                mb: 4,
+              }}
+            >
+              ALIKAB IMPORT EXPORT is a leading multi-sectoral enterprise with a
+              strong presence in Ethiopia's growing economy. Founded in 2010,
+              we've grown from a small trading company to a diversified business
+              group impacting multiple industries.
+            </Typography>
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: { xs: "column", sm: "row" },
+                gap: 2,
+                mb: 6,
+              }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              ></motion.div>
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="large"
+                  sx={{
+                    borderRadius: "50px",
+                    px: 4,
+                    py: 1.5,
+                    fontWeight: "bold",
+                    borderWidth: 2,
+                    "&:hover": { borderWidth: 2 },
+                  }}
+                  onClick={() => navigate("/contact")}
                 >
-                  {feature.title}
-                </Typography>
-                <Typography variant="body1" sx={{ color: "#4E4E4EB3" }}>
-                  {feature.desc}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
+                  Contact Us
+                </Button>
+              </motion.div>
+            </Box>
+
+            {/* Stats */}
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: {
+                  xs: "repeat(2, 1fr)",
+                  sm: "repeat(4, 1fr)",
+                },
+                gap: 2,
+                mt: 4,
+              }}
+            >
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + index * 0.1 }}
+                >
+                  <Box
+                    sx={{
+                      backgroundColor: "rgba(255, 255, 255, 0.05)",
+                      backdropFilter: "blur(10px)",
+                      borderRadius: 2,
+                      p: 2,
+                      textAlign: "center",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                    }}
+                  >
+                    <Avatar
+                      sx={{
+                        backgroundColor: "primary.main",
+                        color: "white",
+                        width: 40,
+                        height: 40,
+                        mb: 1,
+                        mx: "auto",
+                      }}
+                    >
+                      {stat.icon}
+                    </Avatar>
+                    <Typography
+                      variant="h5"
+                      sx={{ fontWeight: "bold", color: "white" }}
+                    >
+                      {stat.value}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: "#B4D3FE" }}>
+                      {stat.label}
+                    </Typography>
+                  </Box>
+                </motion.div>
+              ))}
+            </Box>
+          </motion.div>
+        </Grid>
       </Grid>
+
+      {/* Background blurs */}
+      <Box
+        sx={{
+          position: "absolute",
+          right: -100,
+          bottom: -100,
+          backgroundColor: "primary.light",
+          opacity: 0.2,
+          filter: "blur(60px)",
+          borderRadius: "50%",
+          width: 300,
+          height: 300,
+          zIndex: 0,
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          left: -100,
+          top: -100,
+          backgroundColor: "secondary.light",
+          opacity: 0.2,
+          filter: "blur(60px)",
+          borderRadius: "50%",
+          width: 300,
+          height: 300,
+          zIndex: 0,
+        }}
+      />
     </Box>
   );
 };

@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 
 const StatsSection = () => {
   const stats = [
-    { value: "15+", label: "Years Experience" },
+    { value: "1+", label: "Years Experience" },
     { value: "200+", label: "Products Imported" },
-    { value: "50+", label: "Countries Sourced" },
+    { value: "5+", label: "Countries Sourced" },
     { value: "24/7", label: "Support Available" },
   ];
 
