@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-// hover fixed
-const FeaturedProducts = ({ products, onRequestSpecifications }) => {
-  // Animation variants
+
+const FeaturedProducts = ({ products }) => {
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -25,27 +24,10 @@ const FeaturedProducts = ({ products, onRequestSpecifications }) => {
     },
   };
 
-  const hoverContent = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const featureItem = {
-    hidden: { opacity: 0, x: -10 },
-    show: { opacity: 1, x: 0 },
-  };
-
   return (
     <div className="bg-gray-100 py-24" id="products">
       <div className="mx-auto px-4 container">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +50,7 @@ const FeaturedProducts = ({ products, onRequestSpecifications }) => {
           </p>
         </motion.div>
 
-        {/* Products Grid */}
+        {/* Products */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -84,7 +66,7 @@ const FeaturedProducts = ({ products, onRequestSpecifications }) => {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              {/* Product Image */}
+              {/* Image */}
               <motion.img
                 src={product.image}
                 alt={product.name}
@@ -94,68 +76,61 @@ const FeaturedProducts = ({ products, onRequestSpecifications }) => {
                 transition={{ duration: 0.7 }}
               />
 
-              {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black to-transparent opacity-70"></div>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black to-transparent opacity-70" />
 
-              {/* Product Content */}
-              <motion.div
-                initial={{ y: 0 }}
-                whileHover={{ y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="right-0 bottom-0 left-0 absolute p-8 text-white"
-              >
-                {/* Always Visible Content */}
-                <motion.h3
-                  className="mb-1 font-bold text-2xl"
-                  initial={{ y: 0 }}
-                  whileHover={{ y: -10 }}
-                >
-                  {product.name}
-                </motion.h3>
-                <motion.p
-                  className="mb-4 font-medium text-green-300"
-                  initial={{ y: 0 }}
-                  whileHover={{ y: -10 }}
-                >
+              {/* Content */}
+              <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
+                <h3 className="font-bold text-2xl">{product.name}</h3>
+                <p className="mb-4 font-medium text-green-300">
                   {product.type}
-                </motion.p>
+                </p>
 
-                {/* Hover Content */}
-                <motion.div
-                  initial="hidden"
-                  whileHover="show"
-                  variants={hoverContent}
-                  className="opacity-0 group-hover:opacity-100"
-                >
-                  <motion.ul className="space-y-2 mb-6">
-                    {product.features.map((feature, i) => (
-                      <motion.li
-                        key={i}
-                        variants={featureItem}
-                        className="flex items-center"
+                {/* Feature list always visible on mobile */}
+                {/* Feature list - always visible on mobile, hover on desktop */}
+                <ul className="space-y-2 md:group-hover:opacity-100 md:opacity-0 transition-opacity duration-300">
+                  {product.features.map((feature, index) => (
+                    <li key={index} className="flex items-center text-sm">
+                      <svg
+                        className="mr-2 w-4 h-4 text-green-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                       >
-                        <motion.svg
-                          className="mr-2 w-4 h-4 text-green-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          initial={{ scale: 0 }}
-                          whileInView={{ scale: 1 }}
-                          viewport={{ once: true }}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          ></path>
-                        </motion.svg>
-                        {feature}
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                </motion.div>
-              </motion.div>
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Hover-only list for desktop */}
+                <ul className="hidden md:block space-y-2 md:group-hover:opacity-100 md:opacity-0 transition-opacity duration-300">
+                  {product.features.map((feature, index) => (
+                    <li key={index} className="flex items-center text-sm">
+                      <svg
+                        className="mr-2 w-4 h-4 text-green-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           ))}
         </motion.div>

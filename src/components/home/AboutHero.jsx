@@ -139,7 +139,11 @@ const AboutHero = () => {
                 <div className="mt-10 text-center">
                   <button
                     className="bg-[#212A5E] hover:bg-[#414c86] shadow-md px-8 py-3 rounded-full font-semibold text-white text-lg transition duration-300"
-                    onClick={() => navigate("/transportation")}
+                    onClick={() =>
+                      navigate("/contact", {
+                        state: { scrollTo: "contact-form" },
+                      })
+                    }
                   >
                     Book Your Cargo Slot Now
                   </button>

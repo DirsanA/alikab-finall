@@ -23,7 +23,6 @@ const BookHome = () => {
         </p>
       </div>
 
-      {/* Book Now Button (no download) */}
       <motion.button
         className="flex items-center gap-2 bg-white hover:bg-gray-200 shadow-md px-4 sm:px-5 py-2 sm:py-3 rounded-lg font-semibold text-blue-600 text-sm sm:text-base transition-all"
         whileHover={{ scale: 1.05 }}

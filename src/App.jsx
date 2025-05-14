@@ -21,13 +21,10 @@ import AdminDashboard from "./components/adminPage/AdminDashboard";
 
 // Create a separate component that uses routing hooks
 const AppContent = () => {
-  const location = useLocation();
-  const isAdminPage = location.pathname === "/admin";
-
   return (
     <div>
       <ScrollToTop />
-      {!isAdminPage && <Header />}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -40,7 +37,7 @@ const AppContent = () => {
         <Route path="/consultancy" element={<ConsultancyPage />} />
         <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
-      {!isAdminPage && <Footer />}
+      <Footer />
     </div>
   );
 };
