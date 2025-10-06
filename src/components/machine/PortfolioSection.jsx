@@ -233,7 +233,7 @@ const PortfolioSection = ({ onExplore, onScheduleDemo }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={closeModal}
-          className="z-50 fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 p-2 sm:p-4"
+          className="z-50 fixed inset-0 flex justify-center items-center bg-opacity-80 backdrop-blur-lg p-2 sm:p-4"
         >
           <motion.div
             initial={{ scale: 0.9, y: 50 }}

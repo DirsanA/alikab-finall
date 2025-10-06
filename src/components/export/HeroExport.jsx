@@ -153,7 +153,11 @@ const HeroExport = () => {
             </button>
             <button
               className="hover:bg-green-900/30 hover:shadow-lg px-8 py-4 border border-green-400 rounded-lg font-semibold transition-all duration-300"
-              onClick={() => navigate("/contact")}
+              onClick={() =>
+                navigate("/contact", {
+                  state: { scrollTo: "contact-form" },
+                })
+              }
             >
               Request Export Catalog
             </button>

@@ -60,7 +60,9 @@ const Footer = () => {
           </Stack>
           <Stack direction="row" spacing={1} alignItems="flex-start">
             <EmailIcon sx={{ color: "#FA812F", mt: 0.5 }} />
-            <Typography variant="body2">alikab@gmail.com</Typography>
+            <Typography variant="body2">
+              alikabimportexport@gmail.com
+            </Typography>
           </Stack>
         </Grid>
 

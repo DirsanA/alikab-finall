@@ -93,7 +93,11 @@ const HeroSection = ({ onExploreProducts, onContactTeam }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              onClick={() => navigate("/contact")}
+              onClick={() =>
+                navigate("/contact", {
+                  state: { scrollTo: "contact-form" },
+                })
+              }
             >
               Contact Import Team
             </motion.button>

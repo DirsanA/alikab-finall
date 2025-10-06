@@ -69,7 +69,7 @@ const TransportMainPage = () => {
       icon: <Phone className="w-5 h-5" />,
     },
     {
-      value: "15+",
+      value: "1+",
       label: "Years Experience",
       icon: <ShieldCheck className="w-5 h-5" />,
     },
@@ -393,7 +393,11 @@ const TransportMainPage = () => {
             <div className="flex sm:flex-row flex-col justify-center gap-4">
               <button
                 className="bg-gradient-to-r from-blue-600 hover:from-blue-500 to-blue-500 hover:to-blue-400 shadow-lg hover:shadow-xl px-8 py-4 rounded-lg font-semibold text-white transition-all duration-300"
-                onClick={() => navigate("/", { state: { scrollTo: "quote" } })}
+                onClick={() =>
+                  navigate("/contact", {
+                    state: { scrollTo: "contact-form" },
+                  })
+                }
               >
                 Get Instant Quote
               </button>

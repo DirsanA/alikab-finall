@@ -5,6 +5,7 @@ import Footer from "../components/footer/Footer";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import LandingContact from "../components/contact/LandingContact";
+
 const Contact = () => {
   const location = useLocation();
 
